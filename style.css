@@ -1,0 +1,258 @@
+/* ========== BASE ========== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0f172a;
+    color: #f1f5f9;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    color: #f97316;
+}
+
+a {
+    text-decoration: none;
+    color: #f97316;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+/* ========== HEADER (mise en page comme l’image) ========== */
+header {
+    background-color: #0f172a;
+    padding: 15px 40px;
+    border-bottom: 1px solid #ffffff33; /* fine ligne blanche transparente */
+    margin-bottom: 10px; /* petit espace en dessous */
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #f97316;
+  }
+  
+  .logo-img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li a {
+    color: #f1f5f9;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  nav ul li a:hover {
+    color: #f97316;
+  }
+  
+/* ========== FOOTER ========== */
+footer {
+    background-color: #0f172a;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #1e293b;
+    color: #cbd5e1;
+}
+
+/* ========== ACCUEIL ========== */
+.accueil .hero {
+    background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+                url('images/fond.png') center/cover no-repeat;
+    padding: 100px 40px;
+    color: #f1f5f9;
+    text-align: left;
+    min-height: 450px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.accueil .hero h2 {
+    font-size: 3rem;
+    color: #f97316;
+    margin-bottom: 20px;
+}
+
+.accueil .hero p {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+}
+/* Style spécifique aux encadrés sur la page d'accueil */
+
+.accueil .menu-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+.accueil .menu-item {
+    padding: 45px;
+    width: 550px; /* ✅ Ajuste la largeur ici */
+    font-size: 1.1rem;
+    min-height: 120px;        /* 🟠 augmente la hauteur */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+ .accueil .menu-item img {
+    height: 300px;            /* ajuste selon le besoin */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  
+/* ========== PARAGRAPHE INTRODUCTION ========== */
+.intro {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    text-align: center;
+    font-size: 1.1rem;
+    color: #cbd5e1;
+}
+
+/* ========== TITRE "Nos plats populaires" ========== */
+.preview-menu h3 {
+    text-align: center;
+    color: #f97316;
+    font-size: 1.8rem;
+    margin-top: 60px;
+}
+
+/* ========== BOUTONS ========== */
+.btn {
+    display: inline-block;
+    background-color: #f97316;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #ea580c;
+}
+
+/* ========== PAGE MENU ========== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.menu-item {
+    background-color: #1e293b;
+    padding: 15px;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 120px; /* ↖️ augmente la hauteur */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .menu-item h4 {
+    font-size: 2.0rem; /* Titre du plat (ex: Pad Thaï) */
+    margin: 10px 0 5px;
+    color: #f97316;
+  }
+  
+  .menu-item p {
+    font-size: 1.2rem; /* Description du plat */
+    color: #cbd5e1;
+  }
+
+.menu-item button {
+    margin-top: 10px;
+    background-color: #f97316;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-item button:hover {
+    background-color: #ea580c;
+}
+
+.preview-menu .btn {
+    display: block;
+    width: fit-content;
+    margin: 20px auto;
+}
+
+/* ========== À PROPOS + MAP ========== */
+.about-map {
+    padding: 60px 20px;
+  }
+  
+  .about-map h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #f97316;
+    margin-bottom: 30px;
+  }
+  
+  .about-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  
+  .about-text {
+    flex: 1;
+    min-width: 300px;
+    background-color: #1e293b;
+    color: #cbd5e1;
+    padding: 30px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    border-radius: 10px;
+  }
+  
+  .about-map-box {
+    flex: 1;
+    min-width: 300px;
+    height: 400px; /* 🟠 augmente la hauteur ici */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  

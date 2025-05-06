@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aromea - Accueil</title>
+
+  <!-- Lien vers la feuille de style -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="accueil">
+
+  <!-- ===== CHARGEMENT DU HEADER ===== -->
+  <div id="header"></div>
+
+  <!-- ===== SECTION PRINCIPALE : HÉRO ===== -->
+  <section class="hero">
+    <h2>Bienvenue chez Aromea</h2>
+    <p style="color: #fff;">Découvrez l'authenticité de la cuisine thaïlandaise dans un cadre chaleureux.</p>
+
+    <!-- Bouton vers la page du menu -->
+    <a href="menu.html" class="btn">Découvrez le menu</a>
+  </section>
+
+<!-- ===== SECTION À PROPOS + MAP ===== -->
+<section class="about-map">
+  <h3>Notre Restaurant</h3>
+  <div class="about-container">
+    <!-- Texte de présentation -->
+    <div class="about-text">
+      <p>
+        Aromea vous invite à découvrir les saveurs authentiques de la Thaïlande dans une ambiance moderne et raffinée.
+        Notre chef et son équipe préparent chaque plat avec passion, en utilisant des ingrédients frais et de qualité.
+      </p>
+      <p>
+        Venez découvrir notre cuisine traditionnelle thaïlandaise, où chaque plat raconte une histoire et vous transporte au cœur de la Thaïlande.
+      </p>
+    </div>
+
+    <!-- Carte Google Maps -->
+    <div class="about-map-box">
+      <iframe
+        src="https://www.google.com/maps?q=8+Av.+des+Chartreux,+Marseille&output=embed"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+  <!-- ===== APERÇU DE QUELQUES PLATS ===== -->
+  <section class="preview-menu">
+
+
+    <!-- ✔️ Titre centré -->
+    <h3>Nos plats populaires</h3>
+
+    <!-- Conteneur des plats en grille -->
+    <div class="menu-grid">
+      
+      <!-- 1er plat -->
+      <div class="menu-item">
+        <img src="images/pad_thai.png" alt="Pad Thaï">
+        <h4>Pad Thaï</h4>
+        <p>Nouilles sautées, crevettes ou poulet, cacahuètes, coriandre.</p>
+      </div>
+
+      <!-- 2ème plat -->
+      <div class="menu-item">
+        <img src="images/curry_rouge.png" alt="Curry rouge">
+        <h4>Curry rouge</h4>
+        <p>Épicé, au lait de coco, légumes croquants et riz parfumé.</p>
+      </div>
+
+    </div>
+
+    <!-- Lien pour voir tout le menu -->
+    <a href="menu.html" class="btn">Voir tout le menu</a>
+  </section>
+
+  <!-- ===== CHARGEMENT DU FOOTER ===== -->
+  <div id="footer"></div>
+
+  <!-- ===== SCRIPTS POUR CHARGER LE HEADER ET LE FOOTER ===== -->
+  <script>
+    // Chargement du header
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+
+    // Chargement du footer
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>
