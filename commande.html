@@ -1,52 +1,120 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aromea - Commander</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ===== CHARGEMENT DU HEADER ===== -->
   <div id="header"></div>
 
   <main class="commande-page">
     <h2>Votre commande</h2>
 
-    <!-- ===== PANIER (rempli dynamiquement) ===== -->
+    <!-- ===== FILTRES PAR CATÉGORIE ===== -->
+    <div class="filters">
+      <button onclick="filtrerCategorie('plats')" class="active">Plats</button>
+      <button onclick="filtrerCategorie('desserts')">Desserts</button>
+      <button onclick="filtrerCategorie('boissons')">Boissons</button>
+    </div>
+
+    <!-- ===== PANIER DÉTAILLÉ ===== -->
     <section id="panier">
       <h3>Articles sélectionnés :</h3>
-      <ul id="liste-articles">
-        <!-- Les articles du panier s’affichent ici -->
-      </ul>
+      <div id="liste-panier"></div>
     </section>
 
     <!-- ===== FORMULAIRE CLIENT ===== -->
     <section class="formulaire">
       <h3>Vos informations</h3>
       <form id="form-commande">
-
         <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required>
+        <input type="text" id="nom" name="nom" required />
 
         <label for="adresse">Adresse :</label>
-        <input type="text" id="adresse" name="adresse" required>
+        <input type="text" id="adresse" name="adresse" required />
 
         <label for="tel">Téléphone :</label>
-        <input type="tel" id="tel" name="tel" required>
+        <input type="tel" id="tel" name="tel" required />
 
         <button type="submit">Valider la commande</button>
       </form>
     </section>
   </main>
 
-  <!-- ===== CHARGEMENT DU FOOTER ===== -->
   <div id="footer"></div>
 
-  <!-- ===== SCRIPTS ===== -->
+  <!-- ===== SCRIPT POUR LA GESTION DU PANIER ===== -->
   <script>
-    // Chargement du header et footer
+    let categorieActive = 'plats';
+
+    function afficherPanier() {
+      const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+      const container = document.getElementById('liste-panier');
+      container.innerHTML = '';
+
+      panier
+        .filter(item => item.categorie === categorieActive)
+        .forEach((item) => {
+          const div = document.createElement('div');
+          div.className = 'panier-item';
+          div.innerHTML = `
+            <span><strong>${item.nom}</strong> × ${item.quantite}</span>
+            <div class="controls">
+              <button onclick="changerQuantite('${item.nom}', '${item.categorie}', 1)">+</button>
+              <button onclick="changerQuantite('${item.nom}', '${item.categorie}', -1)">✖</button>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+    }
+
+    function changerQuantite(nom, categorie, delta) {
+      let panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+      const index = panier.findIndex(item => item.nom === nom && item.categorie === categorie);
+
+      if (index !== -1) {
+        panier[index].quantite += delta;
+
+        // Supprimer si quantité tombe à 0 ou moins
+        if (panier[index].quantite <= 0) {
+          panier.splice(index, 1);
+        }
+
+        localStorage.setItem('panierDetaille', JSON.stringify(panier));
+        afficherPanier();
+      }
+    }
+
+    function filtrerCategorie(cat) {
+      categorieActive = cat;
+      document.querySelectorAll('.filters button').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.toLowerCase().includes(cat)) {
+          btn.classList.add('active');
+        }
+      });
+      afficherPanier();
+    }
+
+    document.getElementById('form-commande').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nom = document.getElementById('nom').value;
+      const adresse = document.getElementById('adresse').value;
+      const tel = document.getElementById('tel').value;
+      const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+
+      console.log("Commande validée !", { nom, adresse, tel, panier });
+      alert("Commande envoyée ! Merci pour votre confiance.");
+
+      localStorage.removeItem('panierDetaille');
+      location.reload();
+    });
+
+    // Chargement du header/footer
     fetch('header.html').then(res => res.text()).then(data => {
       document.getElementById('header').innerHTML = data;
     });
@@ -54,42 +122,8 @@
       document.getElementById('footer').innerHTML = data;
     });
 
-    // Affichage du panier à partir du localStorage
-    const liste = document.getElementById('liste-articles');
-    const panier = JSON.parse(localStorage.getItem('panier')) || [];
-
-    if (panier.length === 0) {
-      liste.innerHTML = "<li>Votre panier est vide.</li>";
-    } else {
-      panier.forEach(article => {
-        const li = document.createElement('li');
-        li.textContent = article;
-        liste.appendChild(li);
-      });
-    }
-
-    // Formulaire - événement de soumission
-    document.getElementById('form-commande').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const nom = document.getElementById('nom').value;
-      const adresse = document.getElementById('adresse').value;
-      const tel = document.getElementById('tel').value;
-
-      // On affichera ça dans la console pour test (plus tard on enverra dans Firebase)
-      console.log("Commande validée !");
-      console.log("Nom :", nom);
-      console.log("Adresse :", adresse);
-      console.log("Téléphone :", tel);
-      console.log("Articles :", panier);
-
-      alert("Commande envoyée ! Merci pour votre confiance.");
-
-      // Optionnel : vider le panier
-      localStorage.removeItem('panier');
-      location.reload();
-    });
+    // Initialisation
+    afficherPanier();
   </script>
-
 </body>
 </html>
