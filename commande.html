@@ -19,12 +19,18 @@
       <button onclick="filtrerCategorie('desserts')">Desserts</button>
       <button onclick="filtrerCategorie('boissons')">Boissons</button>
     </div>
+    <div style="margin-top: 10px;">
+      <button onclick="viderPanier()" class="btn-clear">Vider le panier</button>
+    </div>
 
     <!-- ===== PANIER DÉTAILLÉ ===== -->
-    <section id="panier">
-      <h3>Articles sélectionnés :</h3>
-      <div id="liste-panier"></div>
-    </section>
+    
+<section id="panier">
+  <h3>Articles sélectionnés :</h3>
+  <div id="liste-panier"></div>
+  <p id="total-global" class="total-global">Total de la commande : 0,00 €</p>
+</section>
+
 
     <!-- ===== FORMULAIRE CLIENT ===== -->
     <section class="formulaire">
@@ -42,8 +48,15 @@
         <button type="submit">Valider la commande</button>
       </form>
     </section>
-  </main>
 
+    <!-- ✅ RÉCAPITULATIF COMMANDE -->
+    <section id="recapitulatif" style="display: none;">
+      <h3>Récapitulatif de votre commande</h3>
+      <div id="details-recap"></div>
+    </section>
+    
+    </main>
+    
   <div id="footer"></div>
 
   <!-- ===== SCRIPT POUR LA GESTION DU PANIER ===== -->
@@ -51,25 +64,40 @@
     let categorieActive = 'plats';
 
     function afficherPanier() {
-      const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
-      const container = document.getElementById('liste-panier');
-      container.innerHTML = '';
+  const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+  const container = document.getElementById('liste-panier');
+  container.innerHTML = '';
 
-      panier
-        .filter(item => item.categorie === categorieActive)
-        .forEach((item) => {
-          const div = document.createElement('div');
-          div.className = 'panier-item';
-          div.innerHTML = `
-            <span><strong>${item.nom}</strong> × ${item.quantite}</span>
-            <div class="controls">
-              <button onclick="changerQuantite('${item.nom}', '${item.categorie}', 1)">+</button>
-              <button onclick="changerQuantite('${item.nom}', '${item.categorie}', -1)">✖</button>
-            </div>
-          `;
-          container.appendChild(div);
-        });
-    }
+  const articlesCategorie = panier.filter(item => item.categorie === categorieActive);
+
+  articlesCategorie.forEach((item) => {
+    const div = document.createElement('div');
+    div.className = 'panier-item';
+    div.innerHTML = `
+      <span><strong>${item.nom}</strong> × ${item.quantite} — ${(item.prix * item.quantite).toFixed(2)} €</span>
+      <div class="controls">
+        <button onclick="changerQuantite('${item.nom}', '${item.categorie}', 1)">+</button>
+        <button onclick="changerQuantite('${item.nom}', '${item.categorie}', -1)">✖</button>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+
+  // === TOTAL PAR CATÉGORIE ===
+  const total = articlesCategorie.reduce((sum, item) => sum + item.prix * item.quantite, 0);
+  const totalDiv = document.createElement('div');
+  totalDiv.className = 'panier-total';
+  totalDiv.innerHTML = `<strong>Total : ${total.toFixed(2)} €</strong>`;
+  container.appendChild(totalDiv);
+
+  // === TOTAL GLOBAL ===
+  const totalGlobal = panier.reduce((sum, item) => sum + item.prix * item.quantite, 0);
+  const totalGlobalElement = document.getElementById('total-global');
+  const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
+  totalGlobalElement.textContent = `Total de la commande : ${totalGlobal.toFixed(2).replace('.', ',')} € (${totalArticles} article${totalArticles > 1 ? 's' : ''})`;
+
+}
+
 
     function changerQuantite(nom, categorie, delta) {
       let panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
@@ -85,6 +113,7 @@
 
         localStorage.setItem('panierDetaille', JSON.stringify(panier));
         afficherPanier();
+        mettreAJourBadgeNav(); // ✅ met à jour le badge quand on modifie la quantité
       }
     }
 
@@ -108,16 +137,62 @@
       const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
 
       console.log("Commande validée !", { nom, adresse, tel, panier });
-      alert("Commande envoyée ! Merci pour votre confiance.");
+      const detailsRecap = document.getElementById('details-recap');
+let recapHTML = `<p><strong>Nom :</strong> ${nom}</p>`;
+recapHTML += `<p><strong>Adresse :</strong> ${adresse}</p>`;
+recapHTML += `<p><strong>Téléphone :</strong> ${tel}</p>`;
+recapHTML += `<h4>Articles commandés :</h4><ul>`;
 
-      localStorage.removeItem('panierDetaille');
-      location.reload();
+let totalCommande = 0;
+panier.forEach(item => {
+  const sousTotal = item.prix * item.quantite;
+  totalCommande += sousTotal;
+  recapHTML += `<li>${item.nom} × ${item.quantite} — ${sousTotal.toFixed(2).replace('.', ',')} €</li>`;
+});
+
+recapHTML += `</ul><p><strong>Total :</strong> ${totalCommande.toFixed(2).replace('.', ',')} €</p>`;
+
+detailsRecap.innerHTML = recapHTML;
+
+// Afficher le récapitulatif
+document.getElementById('recapitulatif').style.display = 'block';
+
+// Masquer le formulaire
+document.querySelector('.formulaire').style.display = 'none';
+
+// Vider le panier
+localStorage.removeItem('panierDetaille');
+
     });
+
+    function viderPanier() {
+  localStorage.removeItem('panierDetaille');
+  afficherPanier();
+  mettreAJourBadgeNav();
+}
+
+function mettreAJourBadgeNav() {
+  const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+  const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
+  const badge = document.getElementById('nav-badge');
+  if (badge) {
+    badge.textContent = totalArticles > 0 ? totalArticles : '';
+
+    // Ajoute l'effet de rebond
+    badge.classList.remove('bounce');
+    void badge.offsetWidth; // 🔄 force le reflow pour relancer l'animation
+    badge.classList.add('bounce');
+  }
+}
+mettreAJourBadgeNav();
+
 
     // Chargement du header/footer
     fetch('header.html').then(res => res.text()).then(data => {
-      document.getElementById('header').innerHTML = data;
-    });
+  document.getElementById('header').innerHTML = data;
+  mettreAJourBadgeNav(); // 👈 Appeler la fonction APRÈS que le header est en place
+});
+
     fetch('footer.html').then(res => res.text()).then(data => {
       document.getElementById('footer').innerHTML = data;
     });

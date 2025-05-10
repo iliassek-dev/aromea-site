@@ -7,12 +7,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="ajout-message" class="ajout-flottant">✅ Article ajouté au panier</div>
 
   <!-- ===== CHARGEMENT DU HEADER ===== -->
   <div id="header"></div>
 
   <!-- ===== CONTENU DE LA PAGE MENU ===== -->
   <main class="menu-page">
+    <div id="total-menu" style="text-align: right; font-weight: bold; color: #f97316; margin-bottom: 20px;">
+      Total actuel : 0,00 €
+    </div>
+    
     <h2>Notre Menu</h2>
 
     <!-- === PLATS THAÏLANDAIS === -->
@@ -24,63 +29,81 @@
           <img src="images/pad_thai.png" alt="Pad Thaï">
           <h4>Pad Thaï</h4>
           <p>Nouilles sautées au wok, crevettes ou poulet, cacahuètes, citron vert.</p>
-          <button onclick="ajouterAuPanier('Pad Thaï', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">12,90 €</p>
+          <button onclick="ajouterAuPanier('Pad Thaï', 'plats', 12.90)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/curry_rouge.png" alt="Curry Rouge">
           <h4>Curry Rouge</h4>
           <p>Épicé, lait de coco, légumes croquants, basilic thaï.</p>
-          <button onclick="ajouterAuPanier('Curry Rouge', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">13,50 €</p>
+          <button onclick="ajouterAuPanier('Curry Rouge', 'plats', 13.50)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/curry_vert.png" alt="Curry Vert">
           <h4>Curry Vert</h4>
           <p>Très parfumé, légumes, aubergines, poulet ou tofu.</p>
-          <button onclick="ajouterAuPanier('Curry Vert', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">13,00 €</p>
+          <button onclick="ajouterAuPanier('Curry Vert', 'plats', 13.00)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/boeuf_basilic.png" alt="Bœuf au basilic">
           <h4>Bœuf au basilic</h4>
           <p>Émincé de bœuf sauté avec basilic thaï, ail et piment.</p>
-          <button onclick="ajouterAuPanier('Bœuf au basilic', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">13,90 €</p>
+          <button onclick="ajouterAuPanier('Bœuf au basilic', 'plats', 13.90)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/salade_papaye.png" alt="Salade de papaye">
           <h4>Salade de papaye</h4>
           <p>Som Tam : papaye verte râpée, citron vert, cacahuètes, piment.</p>
-          <button onclick="ajouterAuPanier('Salade de papaye', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">9,90 €</p>
+          <button onclick="ajouterAuPanier('Salade de papaye', 'plats', 9.90)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/riz_ananas.png" alt="Riz à l’ananas">
           <h4>Riz sauté à l’ananas</h4>
           <p>Riz thaï, crevettes, ananas, noix de cajou, épices douces.</p>
-          <button onclick="ajouterAuPanier('Riz à l’ananas', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">11,90 €</p>
+          <button onclick="ajouterAuPanier('Riz à l’ananas', 'plats', 11.90)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/brochettes_poulet.png" alt="Brochettes Satay">
           <h4>Brochettes Satay</h4>
           <p>Poulet grillé mariné aux épices, sauce cacahuète maison.</p>
-          <button onclick="ajouterAuPanier('Brochettes Satay', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">10,90 €</p>
+          <button onclick="ajouterAuPanier('Brochettes Satay', 'plats', 10.90)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/soupe_coco.png" alt="Soupe coco">
           <h4>Soupe coco</h4>
           <p>Tom Kha Kai : soupe au lait de coco, galanga, citronnelle, poulet.</p>
-          <button onclick="ajouterAuPanier('Soupe coco', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">9,90 €</p>
+          <button onclick="ajouterAuPanier('Soupe coco', 'plats', 9.90)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/crevettes_piment.png" alt="Crevettes épicées">
           <h4>Crevettes épicées</h4>
           <p>Crevettes sautées au wok avec ail, piment, coriandre fraîche.</p>
-          <button onclick="ajouterAuPanier('Crevettes épicées', 'plats')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">14,20 €</p>
+          <button onclick="ajouterAuPanier('Crevettes épicées', 'plats', 14.20)">Ajouter au panier</button>
         </div>
 
       </div>
@@ -95,42 +118,54 @@
           <img src="images/mango_sticky_rice.png" alt="Mango Sticky Rice">
           <h4>Mango Sticky Rice</h4>
           <p>Riz gluant sucré, mangue fraîche, lait de coco.</p>
-          <button onclick="ajouterAuPanier('Mango Sticky Rice', 'desserts')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">6,90 €</p>
+          <button onclick="ajouterAuPanier('Mango Sticky Rice', 'desserts', 6.90)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/banane_coco.png" alt="Banane au lait de coco">
           <h4>Banane au lait de coco</h4>
           <p>Banane cuite dans du lait de coco sucré et chaud.</p>
-          <button onclick="ajouterAuPanier('Banane au lait de coco', 'desserts')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">5,90 €</p>
+          <button onclick="ajouterAuPanier('Banane au lait de coco', 'desserts', 5.90)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/perles_tapioca.png" alt="Perles de tapioca">
           <h4>Perles de tapioca</h4>
           <p>Tapioca, lait de coco, banane ou patate douce.</p>
-          <button onclick="ajouterAuPanier('Perles de tapioca', 'desserts')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">6,50 €</p>
+          <button onclick="ajouterAuPanier('Perles de tapioca', 'desserts', 6.50)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/beignets_banane.png" alt="Beignets de banane">
           <h4>Beignets de banane</h4>
           <p>Petits beignets croustillants à la banane, sauce miel.</p>
-          <button onclick="ajouterAuPanier('Beignets de banane', 'desserts')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">6,20 €</p>
+          <button onclick="ajouterAuPanier('Beignets de banane', 'desserts', 6.20)">Ajouter au panier</button>
         </div>
 
         <div class="menu-item">
           <img src="images/boulettes_sesame.png" alt="Boulettes de sésame">
           <h4>Boulettes de sésame</h4>
           <p>Beignets de riz gluant fourrés à la pâte de haricot rouge, enrobés de sésame.</p>
-          <button onclick="ajouterAuPanier('Boulettes de sésame', 'desserts')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">6,50 €</p>
+          <button onclick="ajouterAuPanier('Boulettes de sésame', 'desserts', 6.50)">Ajouter au panier</button>
         </div>
         
         <div class="menu-item">
           <img src="images/taro_coco.png" alt="Taro au lait de coco">
           <h4>Taro au lait de coco</h4>
           <p>Dés de taro fondants dans un lait de coco parfumé et sucré.</p>
-          <button onclick="ajouterAuPanier('Taro au lait de coco', 'desserts')">Ajouter au panier</button>
+          <div class="prix-wrapper"></div>
+          <p class="prix">6,80 €</p>
+          <button onclick="ajouterAuPanier('Taro au lait de coco', 'desserts', 6.80)">Ajouter au panier</button>
         </div>
         
 
@@ -146,42 +181,54 @@
       <img src="images/thai_tea.png" alt="Thai Tea">
       <h4>Thé glacé thaï</h4>
       <p>Thé noir sucré aux épices, lait concentré, servi glacé.</p>
-      <button onclick="ajouterAuPanier('Thé glacé thaï', 'boissons')">Ajouter au panier</button>
+      <div class="prix-wrapper"></div>
+      <p class="prix">3,50 €</p>
+      <button onclick="ajouterAuPanier('Thé glacé thaï', 'boissons', 3.50)">Ajouter au panier</button>
     </div>
 
     <div class="menu-item">
       <img src="images/eau_coco.png" alt="Eau de coco">
       <h4>Eau de coco</h4>
       <p>Eau de coco 100% naturelle, servie fraîche.</p>
-      <button onclick="ajouterAuPanier('Eau de coco', 'boissons')">Ajouter au panier</button>
+      <div class="prix-wrapper"></div>
+      <p class="prix">3,50 €</p>
+      <button onclick="ajouterAuPanier('Eau de coco', 'boissons', 3.50)">Ajouter au panier</button>
     </div>
 
     <div class="menu-item">
       <img src="images/boisson_citronnelle.png" alt="Citronnelle fraîche">
       <h4>Citronnelle fraîche</h4>
       <p>Infusion maison à la citronnelle, citron et menthe.</p>
-      <button onclick="ajouterAuPanier('Citronnelle fraîche', 'boissons')">Ajouter au panier</button>
+      <div class="prix-wrapper"></div>
+      <p class="prix">3,50 €</p>
+      <button onclick="ajouterAuPanier('Citronnelle fraîche', 'boissons', 3.50)">Ajouter au panier</button>
     </div>
 
     <div class="menu-item">
       <img src="images/coca.png" alt="Coca-Cola">
       <h4>Coca-Cola</h4>
       <p>Canette 33cl servie fraîche.</p>
-      <button onclick="ajouterAuPanier('Coca-Cola', 'boissons')">Ajouter au panier</button>
+      <div class="prix-wrapper"></div>
+      <p class="prix">3,00 €</p>
+      <button onclick="ajouterAuPanier('Coca-Cola', 'boissons', 3.00)">Ajouter au panier</button>
     </div>
 
     <div class="menu-item">
       <img src="images/sprite.png" alt="Sprite">
       <h4>Sprite</h4>
       <p>Canette 33cl servie fraîche.</p>
-      <button onclick="ajouterAuPanier('Sprite', 'boissons')">Ajouter au panier</button>
+      <div class="prix-wrapper"></div>
+      <p class="prix">3,00 €</p>
+      <button onclick="ajouterAuPanier('Sprite', 'boissons', 3.00)">Ajouter au panier</button>
     </div>
 
     <div class="menu-item">
       <img src="images/fanta.png" alt="Fanta">
       <h4>Fanta</h4>
       <p>Canette 33cl servie fraîche.</p>
-      <button onclick="ajouterAuPanier('Fanta', 'boissons')">Ajouter au panier</button>
+      <div class="prix-wrapper"></div>
+      <p class="prix">3,00 €</p>
+      <button onclick="ajouterAuPanier('Fanta', 'boissons', 3.00)">Ajouter au panier</button>
     </div>
 
   </div>
@@ -194,23 +241,60 @@
 
    <!-- ===== SCRIPT POUR PANIER ET CHARGEMENT HEADER/FOOTER ===== -->
    <script>
-function ajouterAuPanier(nom, categorie) {
+    
+function ajouterAuPanier(nom, categorie, prix) {
   let panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
   const index = panier.findIndex(item => item.nom === nom && item.categorie === categorie);
 
   if (index !== -1) {
     panier[index].quantite += 1;
   } else {
-    panier.push({ nom, categorie, quantite: 1 });
+    panier.push({ nom, categorie, prix, quantite: 1 });
   }
 
   localStorage.setItem('panierDetaille', JSON.stringify(panier));
-  alert(`🛒 ${nom} ajouté au panier !`);
+  mettreAJourTotalMenu();
+mettreAJourBadgeNav(); // 👈 Met à jour le badge après ajout
+const msg = document.getElementById('ajout-message');
+msg.classList.add('visible');
+setTimeout(() => msg.classList.remove('visible'), 1500);
+
+
 }
 
-    fetch('header.html').then(res => res.text()).then(data => {
-      document.getElementById('header').innerHTML = data;
-    });
+function mettreAJourBadgeNav() {
+  const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+  const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
+  const badge = document.getElementById('nav-badge');
+  if (badge) {
+    badge.textContent = totalArticles > 0 ? totalArticles : '';
+
+    // Ajoute l'effet de rebond
+    badge.classList.remove('bounce');
+    void badge.offsetWidth; // 🔄 force le reflow pour relancer l'animation
+    badge.classList.add('bounce');
+  }
+}
+mettreAJourBadgeNav();
+
+function mettreAJourTotalMenu() {
+  const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+  const total = panier.reduce((sum, item) => sum + item.prix * item.quantite, 0);
+  const totalElement = document.getElementById('total-menu');
+  if (totalElement) {
+    totalElement.textContent = `Total actuel : ${total.toFixed(2).replace('.', ',')} €`;
+  }
+}
+// Appeler la mise à jour du total à chaque ajout
+mettreAJourTotalMenu();
+
+
+fetch('header.html').then(res => res.text()).then(data => {
+  document.getElementById('header').innerHTML = data;
+  mettreAJourBadgeNav(); // 👈 Appeler la fonction APRÈS que le header est en place
+});
+
+    
     fetch('footer.html').then(res => res.text()).then(data => {
       document.getElementById('footer').innerHTML = data;
     });

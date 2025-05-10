@@ -163,62 +163,55 @@ footer {
 
 /* ========== PAGE MENU ========== */
 .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .menu-item {
-    background-color: #1e293b;
-    padding: 15px;
-    border: 1px solid #334155;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
+  background-color: #1e293b;
+  padding: 15px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 460px; /* fixe la hauteur minimale pour uniformiser */
 }
 
 .menu-item img {
-    width: 100%;
-    height: 180px; /* ↖️ augmente la hauteur */
-    object-fit: contain;
-    border-radius: 8px;
-  }
-  
-  .menu-item h4 {
-    font-size: 2.0rem; /* Titre du plat (ex: Pad Thaï) */
-    margin: 10px 0 5px;
-    color: #f97316;
-  }
-  
-  .menu-item p {
-    font-size: 1.2rem; /* Description du plat */
-    color: #cbd5e1;
-  }
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.menu-item h4 {
+  font-size: 2.0rem;
+  margin: 10px 0 5px;
+  color: #f97316;
+}
+
+.menu-item p {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  margin-bottom: 2px; /* 🟧 réduit l’espace entre le texte et le prix */
+}
 
 .menu-item button {
-    margin-top: 10px;
-    background-color: #f97316;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: auto;
-
+  margin-top: 0;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .menu-item button:hover {
-    background-color: #ea580c;
-}
-
-.preview-menu .btn {
-    display: block;
-    width: fit-content;
-    margin: 20px auto;
+  background-color: #ea580c;
 }
 
 .menu-section > h3 {
@@ -227,6 +220,54 @@ footer {
   margin: 40px 0 20px;
   color: #f97316;
 }
+
+/* ✅ Bloc contenant prix + bouton */
+.prix-wrapper {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* ✅ Prix seul */
+.menu-item .prix {
+  font-size: 1.1rem;
+  color: #f97316;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 12px;  
+}
+
+.menu-item:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+.ajout-flottant {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #10b981;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+
+  pointer-events: none; /* ✅ Empêche de bloquer les clics */
+}
+
+.ajout-flottant.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* ========== À PROPOS + MAP ========== */
 .about-map {
@@ -395,6 +436,28 @@ footer {
   }
 }
 
+.total-global {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 15px;
+  color: #f97316;
+}
+
+.btn-clear {
+  background-color: #e11d48;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-clear:hover {
+  background-color: #be123c;
+}
+
+
 /* ========== PAGE CONTACT ========== */
 .contact-page {
   max-width: 800px;
@@ -501,4 +564,27 @@ footer {
   }
 }
 
-  
+.badge-nav {
+  background-color: #ef4444; /* rouge vif */
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border-radius: 999px;
+  padding: 2px 7px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.badge-nav.bounce {
+  animation: bounce 0.3s ease;
+}

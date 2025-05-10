@@ -24,7 +24,7 @@
 
 <!-- ===== SECTION À PROPOS + MAP ===== -->
 <section class="about-map">
-  <h3>Notre Restaurant</h3>
+  <h3>&nbsp;&nbsp;Notre Restaurant</h3>
   <div class="about-container">
     <!-- Texte de présentation -->
     <div class="about-text">
@@ -74,7 +74,11 @@
     </div>
 
     <!-- Lien pour voir tout le menu -->
-    <a href="menu.html" class="btn">Voir tout le menu</a>
+    <!-- Lien pour voir tout le menu -->
+<div style="text-align: center; margin-top: 30px;">
+  <a href="menu.html" class="btn">Voir tout le menu</a>
+</div>
+
   </section>
 
   <!-- ===== CHARGEMENT DU FOOTER ===== -->
@@ -82,12 +86,26 @@
 
   <!-- ===== SCRIPTS POUR CHARGER LE HEADER ET LE FOOTER ===== -->
   <script>
+function mettreAJourBadgeNav() {
+  const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+  const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
+  const badge = document.getElementById('nav-badge');
+  if (badge) {
+    badge.textContent = totalArticles > 0 ? totalArticles : '';
+
+    // Ajoute l'effet de rebond
+    badge.classList.remove('bounce');
+    void badge.offsetWidth; // 🔄 force le reflow pour relancer l'animation
+    badge.classList.add('bounce');
+  }
+}
+
     // Chargement du header
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('header').innerHTML = data;
-      });
+    fetch('header.html').then(res => res.text()).then(data => {
+  document.getElementById('header').innerHTML = data;
+  mettreAJourBadgeNav(); // 👈 mise à jour après injection du header
+});
+
 
     // Chargement du footer
     fetch('footer.html')
