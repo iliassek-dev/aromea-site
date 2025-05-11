@@ -1,116 +1,75 @@
+# 🇹🇭 Aromea – Site Web du restaurant thaïlandais
 
-# Aromea – Site Web de restaurant thaïlandais 🇹🇭
+Ce projet est un **site vitrine complet** pour **Aromea**, un restaurant thaïlandais fictif, réalisé dans le cadre d’un **projet de BTS SIO**.
 
-Ce projet est un site vitrine pour **Aromea**, un restaurant thaïlandais fictif développé dans le cadre d’un projet de BTS.
+---
 
-## 🧾 Fonctionnalités
+## 🧾 Fonctionnalités principales
 
-- Page d’accueil avec bannière, présentation et plats populaires
-- Affichage dynamique du **header** et du **footer**
-- Menu avec plats et desserts affichés en grille
-- Page de commande avec panier interactif (JavaScript)
-- Page contact avec formulaire et **carte Google Maps**
-- Design responsive et moderne
+- ✅ Page d’accueil avec **bannière**, **présentation du restaurant** et **plats populaires**
+- 🧭 Affichage dynamique du **header** et du **footer** sur toutes les pages
+- 🍜 **Menu complet** avec plats, desserts et boissons en grille
+- 🛒 Page **commande** avec :
+  - panier interactif (localStorage)
+  - total en temps réel
+  - badge dynamique dans la navigation
+  - formulaire client
+  - enregistrement des commandes dans Firebase 🔥
+- 📍 Page contact avec **formulaire de contact** et **carte Google Maps**
+- 📱 Design responsive moderne (mobile, tablette, ordinateur)
+
+---
 
 ## 🛠️ Technologies utilisées
 
-- **HTML5**
-- **CSS3**
-- **JavaScript**
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [GitHub](https://github.com/)
-- Optionnel : [Firebase](https://firebase.google.com/) pour l'intégration future d'une base de données
+- `HTML5` – Structure du site  
+- `CSS3` – Mise en page et design  
+- `JavaScript` – Interaction utilisateur (panier, badge, formulaires…)  
+- `Firebase` – Enregistrement des commandes (Firestore)  
+- `Visual Studio Code` – Éditeur utilisé  
+- `Git / GitHub` – Suivi de version et publication  
 
-## 📁 Structure du projet
+---
+
+## 🔥 Intégration Firebase
+
+Le site utilise [**Firebase Firestore**](https://firebase.google.com/) pour **sauvegarder les commandes clients**.
+
+- Connexion sécurisée (clé API côté client)
+- Base Firestore en mode **test sécurisé (lecture/écriture)**
+- Chaque commande comprend : nom, téléphone, adresse, articles, total, et date
+
+---
+
+## 📁 Arborescence du projet
 
 ```
 /images              → images du site (plats, fond, logo…)
 index.html           → page d’accueil
 menu.html            → page du menu
-commande.html        → page de commande
+commande.html        → page de commande avec panier
 contact.html         → page de contact
-header.html          → en-tête du site (chargé dynamiquement)
-footer.html          → pied de page (chargé dynamiquement)
+header.html          → en-tête réutilisable
+footer.html          → pied de page réutilisable
 style.css            → feuille de style principale
 ```
 
-## 📍 Adresse
+---
 
-Le restaurant est situé au :  
+## 🗺️ Adresse du restaurant
+
 **8 Avenue des Chartreux, Marseille, France**  
-Une carte Google Maps est intégrée dans la page d’accueil.
-
-## 🚀 Mise en ligne
-
-> Le site sera accessible prochainement via **GitHub Pages**.
+Carte intégrée dans `index.html` via **Google Maps Embed**.
 
 ---
 
-## 📸 Aperçu visuel
+## 🚀 Déploiement
 
-![aperçu](images/preview.png) <!-- optionnel si tu ajoutes une capture dans ton repo -->
+> Le site pourra être mis en ligne via **GitHub Pages** ou hébergement Firebase.
 
----
 
 ## 👤 Auteur
 
 Projet réalisé par **Iliassedzz**  
-Année : 2025 – BTS SIO
-
-# Aromea – Site Web de restaurant thaïlandais 🇹🇭
-
-Ce projet est un site vitrine pour **Aromea**, un restaurant thaïlandais fictif développé dans le cadre d’un projet de BTS.
-
-## 🧾 Fonctionnalités
-
-- Page d’accueil avec bannière, présentation et plats populaires
-- Affichage dynamique du **header** et du **footer**
-- Menu avec plats et desserts affichés en grille
-- Page de commande avec panier interactif (JavaScript)
-- Page contact avec formulaire et **carte Google Maps**
-- Design responsive et moderne
-
-## 🛠️ Technologies utilisées
-
-- **HTML5**
-- **CSS3**
-- **JavaScript**
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [GitHub](https://github.com/)
-- Optionnel : [Firebase](https://firebase.google.com/) pour l'intégration future d'une base de données
-
-## 📁 Structure du projet
-
-```
-/images              → images du site (plats, fond, logo…)
-index.html           → page d’accueil
-menu.html            → page du menu
-commande.html        → page de commande
-contact.html         → page de contact
-header.html          → en-tête du site (chargé dynamiquement)
-footer.html          → pied de page (chargé dynamiquement)
-style.css            → feuille de style principale
-```
-
-## 📍 Adresse
-
-Le restaurant est situé au :  
-**8 Avenue des Chartreux, Marseille, France**  
-Une carte Google Maps est intégrée dans la page d’accueil.
-
-## 🚀 Mise en ligne
-
-> Le site sera accessible prochainement via **GitHub Pages**.
-
----
-
-## 📸 Aperçu visuel
-
-![aperçu](images/preview.png) <!-- optionnel si tu ajoutes une capture dans ton repo -->
-
----
-
-## 👤 Auteur
-
-Projet réalisé par **Iliassedzz**  
-Année : 2025 – BTS SIO
+🎓 Année scolaire : **2025**  
+📁 Projet présenté dans le cadre du **BTS SIO**

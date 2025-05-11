@@ -239,67 +239,67 @@
   <!-- ===== CHARGEMENT DU FOOTER ===== -->
   <div id="footer"></div>
 
-   <!-- ===== SCRIPT POUR PANIER ET CHARGEMENT HEADER/FOOTER ===== -->
-   <script>
-    
-function ajouterAuPanier(nom, categorie, prix) {
-  let panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
-  const index = panier.findIndex(item => item.nom === nom && item.categorie === categorie);
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Fonction pour ajouter un article au panier
+    function ajouterAuPanier(nom, categorie, prix) {
+      let panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+      const index = panier.findIndex(item => item.nom === nom && item.categorie === categorie);
 
-  if (index !== -1) {
-    panier[index].quantite += 1;
-  } else {
-    panier.push({ nom, categorie, prix, quantite: 1 });
-  }
+      // Si l'article est déjà dans le panier, on augmente la quantité
+      if (index !== -1) {
+        panier[index].quantite += 1;
+      } else {
+        // Sinon, on l'ajoute au panier
+        panier.push({ nom, categorie, prix, quantite: 1 });
+      }
 
-  localStorage.setItem('panierDetaille', JSON.stringify(panier));
-  mettreAJourTotalMenu();
-mettreAJourBadgeNav(); // 👈 Met à jour le badge après ajout
-const msg = document.getElementById('ajout-message');
-msg.classList.add('visible');
-setTimeout(() => msg.classList.remove('visible'), 1500);
+      localStorage.setItem('panierDetaille', JSON.stringify(panier));
+      mettreAJourTotalMenu();
+      mettreAJourBadgeNav();
 
+      // Affichage d'un petit message "ajouté au panier"
+      const msg = document.getElementById('ajout-message');
+      msg.classList.add('visible');
+      setTimeout(() => msg.classList.remove('visible'), 1500);
+    }
 
-}
+    // Met à jour le badge en haut à droite de la nav avec le nombre d'articles
+    function mettreAJourBadgeNav() {
+      const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+      const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
+      const badge = document.getElementById('nav-badge');
+      if (badge) {
+        badge.textContent = totalArticles > 0 ? totalArticles : '';
+        badge.classList.remove('bounce');
+        void badge.offsetWidth; // Reset animation
+        badge.classList.add('bounce');
+      }
+    }
 
-function mettreAJourBadgeNav() {
-  const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
-  const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
-  const badge = document.getElementById('nav-badge');
-  if (badge) {
-    badge.textContent = totalArticles > 0 ? totalArticles : '';
+    // Met à jour le total en haut de la page menu
+    function mettreAJourTotalMenu() {
+      const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+      const total = panier.reduce((sum, item) => sum + item.prix * item.quantite, 0);
+      const totalElement = document.getElementById('total-menu');
+      if (totalElement) {
+        totalElement.textContent = `Total actuel : ${total.toFixed(2).replace('.', ',')} €`;
+      }
+    }
 
-    // Ajoute l'effet de rebond
-    badge.classList.remove('bounce');
-    void badge.offsetWidth; // 🔄 force le reflow pour relancer l'animation
-    badge.classList.add('bounce');
-  }
-}
-mettreAJourBadgeNav();
+    // Chargement du header et du footer + initialisation du total et du badge
+    fetch('header.html').then(res => res.text()).then(data => {
+      document.getElementById('header').innerHTML = data;
+      mettreAJourBadgeNav();
+    });
 
-function mettreAJourTotalMenu() {
-  const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
-  const total = panier.reduce((sum, item) => sum + item.prix * item.quantite, 0);
-  const totalElement = document.getElementById('total-menu');
-  if (totalElement) {
-    totalElement.textContent = `Total actuel : ${total.toFixed(2).replace('.', ',')} €`;
-  }
-}
-// Appeler la mise à jour du total à chaque ajout
-mettreAJourTotalMenu();
-
-
-fetch('header.html').then(res => res.text()).then(data => {
-  document.getElementById('header').innerHTML = data;
-  mettreAJourBadgeNav(); // 👈 Appeler la fonction APRÈS que le header est en place
-});
-
-    
     fetch('footer.html').then(res => res.text()).then(data => {
       document.getElementById('footer').innerHTML = data;
     });
-  </script>
 
-  
+    // Initialisation au chargement
+    mettreAJourBadgeNav();
+    mettreAJourTotalMenu();
+  </script>
 </body>
 </html>
