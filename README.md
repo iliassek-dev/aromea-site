@@ -1,75 +1,156 @@
-# 🇹🇭 Aromea – Site Web du restaurant thaïlandais
+# 🥗 EatSmart - Application de Commande en Ligne
 
-Ce projet est un **site vitrine complet** pour **Aromea**, un restaurant thaïlandais fictif, réalisé dans le cadre d’un **projet de BTS SIO**.
-
----
-
-## 🧾 Fonctionnalités principales
-
-- ✅ Page d’accueil avec **bannière**, **présentation du restaurant** et **plats populaires**
-- 🧭 Affichage dynamique du **header** et du **footer** sur toutes les pages
-- 🍜 **Menu complet** avec plats, desserts et boissons en grille
-- 🛒 Page **commande** avec :
-  - panier interactif (localStorage)
-  - total en temps réel
-  - badge dynamique dans la navigation
-  - formulaire client
-  - enregistrement des commandes dans Firebase 🔥
-- 📍 Page contact avec **formulaire de contact** et **carte Google Maps**
-- 📱 Design responsive moderne (mobile, tablette, ordinateur)
+EatSmart est une application web moderne de prise de commandes pour un restaurant thaïlandais fictif. Le client peut consulter les plats, ajouter au panier, passer commande et voir le récapitulatif. Le projet s'appuie sur **Firebase Firestore** pour la base de données, **JavaScript moderne (ES6+)**, **CSS responsif** et une architecture en composants dynamiques via le `fetch()` du header/footer.
 
 ---
 
-## 🛠️ Technologies utilisées
+## 🚀 Fonctionnalités principales
 
-- `HTML5` – Structure du site  
-- `CSS3` – Mise en page et design  
-- `JavaScript` – Interaction utilisateur (panier, badge, formulaires…)  
-- `Firebase` – Enregistrement des commandes (Firestore)  
-- `Visual Studio Code` – Éditeur utilisé  
-- `Git / GitHub` – Suivi de version et publication  
-
----
-
-## 🔥 Intégration Firebase
-
-Le site utilise [**Firebase Firestore**](https://firebase.google.com/) pour **sauvegarder les commandes clients**.
-
-- Connexion sécurisée (clé API côté client)
-- Base Firestore en mode **test sécurisé (lecture/écriture)**
-- Chaque commande comprend : nom, téléphone, adresse, articles, total, et date
+- ✅ Affichage dynamique du menu depuis Firestore (`plats`, `desserts`, `boissons`)
+- ✅ Ajout au panier avec animation et badge dynamique
+- ✅ Système de panier persistant (stocké dans `localStorage`)
+- ✅ Formulaire client avec validation HTML5
+- ✅ Enregistrement des commandes dans Firestore
+- ✅ Navigation vers une page de détails pour chaque plat
+- ✅ Design moderne, responsive, avec animations et icônes FontAwesome
+- ✅ Architecture modulaire avec `header.html`, `footer.html`, etc.
 
 ---
 
-## 📁 Arborescence du projet
+## 🗂 Structure du projet
 
 ```
-/images              → images du site (plats, fond, logo…)
-index.html           → page d’accueil
-menu.html            → page du menu
-commande.html        → page de commande avec panier
-contact.html         → page de contact
-header.html          → en-tête réutilisable
-footer.html          → pied de page réutilisable
-style.css            → feuille de style principale
+eatsmart/
+│
+├── index.html              # Page d'accueil (présentation + bouton vers le menu)
+├── menu.html               # Menu principal (plats, desserts, boissons)
+├── commande.html           # Panier + formulaire client
+├── details.html            # Détail d'un plat (chargé par ID)
+│
+├── header.html             # En-tête dynamique
+├── footer.html             # Pied de page dynamique
+│
+├── style.css               # Feuille de styles globale
+├── /images/                # Images des plats
+├── /scripts/               # (optionnel) JS externes modulaires
+│
+└── README.md               # Ce fichier
 ```
 
 ---
 
-## 🗺️ Adresse du restaurant
+## 🔧 Technologies utilisées
 
-**8 Avenue des Chartreux, Marseille, France**  
-Carte intégrée dans `index.html` via **Google Maps Embed**.
+| Technologie        | Rôle                                      |
+|--------------------|--------------------------------------------|
+| **HTML5**          | Structure des pages                        |
+| **CSS3**           | Design, responsive, animations modernes    |
+| **JavaScript ES6+**| Logique (DOM, Firestore, panier, fetch...) |
+| **Firebase Firestore** | Base de données cloud                |
+| **Font Awesome**   | Icônes modernes (📞, 🏠, etc.)              |
 
 ---
 
-## 🚀 Déploiement
+## 🧠 Architecture et logique
 
-> Le site pourra être mis en ligne via **GitHub Pages** ou hébergement Firebase.
+### 🔹 Menu dynamique
+- Récupération des plats depuis Firestore (`articles`)
+- Affichage selon catégorie (`plats`, `desserts`, `boissons`)
+- Chaque article contient un bouton "Ajouter au panier"
 
+### 🔹 Panier local
+- Stockage dans `localStorage` (`panierDetaille`)
+- Calcul automatique du total
+- Badge de panier dynamique dans le header
 
-## 👤 Auteur
+### 🔹 Commande client
+- Formulaire avec validation (nom, adresse, téléphone)
+- Les commandes sont envoyées vers Firestore (`commandes`)
 
-Projet réalisé par **Iliassedzz**  
-🎓 Année scolaire : **2025**  
-📁 Projet présenté dans le cadre du **BTS SIO**
+### 🔹 Détail des plats
+- Redirection vers `details.html?id=XXX`
+- Affichage dynamique du plat sélectionné
+- Ajout possible au panier depuis cette page
+
+---
+
+## 📦 Exemple de données Firebase
+
+### 🔸 Collection `articles`
+
+```json
+{
+  "nom": "Pad Thaï",
+  "categorie": "plats",
+  "prix": 9.90,
+  "description": "Nouilles sautées aux légumes, cacahuètes et sauce thaï.",
+  "images": "padthai.jpg"
+}
+```
+
+### 🔸 Collection `commandes`
+
+```json
+{
+  "nom": "Jean Dupont",
+  "adresse": "12 rue des Lotus",
+  "tel": "0612345678",
+  "panier": [
+    {
+      "nom": "Pad Thaï",
+      "quantite": 2,
+      "prix": 9.90,
+      "categorie": "plats"
+    }
+  ],
+  "date": "2025-06-02T14:10:00.000Z"
+}
+```
+
+---
+
+## 🎨 Design et ergonomie
+
+- Couleurs principales : orange `#f97316`, bleu `#1e293b`
+- Icônes FontAwesome
+- Effets de survol sur les boutons
+- Design responsive pour mobile/tablette
+- Layout centré avec `flex` + `grid`
+- Message d’ajout au panier avec animation
+
+---
+
+## ✅ À faire / pistes d’amélioration
+
+- [ ] Ajouter une interface admin pour voir les commandes
+- [ ] Intégrer un système de paiement en ligne (ex : Stripe)
+- [ ] Ajouter une gestion des stocks
+- [ ] Intégrer un filtre par allergènes
+- [ ] Mode sombre / clair
+
+---
+
+## 📚 Contexte pédagogique
+
+Ce projet a été réalisé dans le cadre du **BTS SIO SLAM**, pour valider les compétences suivantes :
+
+- 🔸 Consommation d'API Firebase
+- 🔸 Stockage et lecture en NoSQL
+- 🔸 Manipulation avancée du DOM
+- 🔸 Gestion d’un panier e-commerce
+- 🔸 Architecture modulaire frontend
+- 🔸 Conception UI/UX moderne
+
+---
+
+## 🧩 Licence
+
+Projet libre sous licence MIT  
+Utilisation autorisée à des fins pédagogiques ou personnelles.
+
+---
+
+## 📸 Aperçus
+
+![Aperçu menu](images/apercu-menu.png)  
+![Aperçu détail](images/apercu-detail.png)
