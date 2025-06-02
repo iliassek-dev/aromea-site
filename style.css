@@ -767,3 +767,76 @@ Utilisé uniquement dans la page contact.html.
 .badge-nav.bounce {
   animation: bounce 0.3s ease;  /* Propriété CSS */
 }
+.details-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;              /* ✅ Centre le contenu verticalement */
+  justify-content: center;
+  background-color: #1e293b;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  margin: 30px auto;
+  max-width: 1000px;
+  padding: 40px;
+  min-height: 300px;                /* ✅ Hauteur verticale agrandie */
+  gap: 30px;
+}
+
+.details-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-img img {
+  max-width: 280px;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.details-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;        /* ✅ Aligne le texte verticalement */
+  color: #f1f5f9;
+  min-height: 200px;
+}
+
+.details-info h2 {
+  color: #f97316;
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.details-info p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.details-info .prix {
+  font-weight: bold;
+  color: #f97316;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.add-to-cart-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #0f172a;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+}
+

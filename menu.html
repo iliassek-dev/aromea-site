@@ -92,7 +92,8 @@
         // Remplir le div avec les données de l'article
         articleDiv.innerHTML = `
           <img src="images/${data.images}" alt="${data.nom}"> <!-- Affichage de l'image -->
-          <h4>${data.nom}</h4> <!-- Affichage du nom -->
+          <h4><a href="details.html?id=${doc.id}" style="color: #f97316;">${data.nom}</a></h4>
+ <!-- Affichage du nom -->
           <p>${data.description}</p> <!-- Description de l'article -->
           <p class="prix">${data.prix} €</p> <!-- Affichage du prix -->
           <button class="add-to-cart-btn" data-nom="${data.nom}" data-categorie="${data.categorie}" data-prix="${data.prix}">Ajouter au panier</button> <!-- Bouton d'ajout au panier -->

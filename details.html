@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Détail du plat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Message flottant -->
+  <div id="ajout-message" class="ajout-flottant">✅ Article ajouté au panier</div>
+
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Contenu principal -->
+  <main class="menu-page">
+    <div class="details-flex" id="plat-detail">
+      <!-- Le contenu dynamique du plat sera injecté ici -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Script Firebase + Logique -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBKpabQB5rKC1zCAyy1puKO3G1YzK0SIxA",
+      authDomain: "aromea-9c2f0.firebaseapp.com",
+      projectId: "aromea-9c2f0",
+      storageBucket: "aromea-9c2f0.appspot.com",
+      messagingSenderId: "974441059113",
+      appId: "1:974441059113:web:b6d1f607707ad50a209d38"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const params = new URLSearchParams(window.location.search);
+    const platId = params.get("id");
+
+    if (!platId) {
+      document.getElementById("plat-detail").innerHTML = "<p>⚠️ Aucune référence d'article fournie.</p>";
+      throw new Error("Aucun ID fourni dans l’URL.");
+    }
+
+    async function chargerDetailsPlat(id) {
+      const docRef = doc(db, "articles", id);
+      const docSnap = await getDoc(docRef);
+
+      if (!docSnap.exists()) {
+        document.getElementById("plat-detail").innerHTML = "<p>❌ Article introuvable.</p>";
+        return;
+      }
+
+      const data = docSnap.data();
+
+      document.getElementById("plat-detail").innerHTML = `
+        <div class="details-img">
+          <img src="images/${data.images}" alt="${data.nom}" />
+        </div>
+        <div class="details-info">
+          <h2>${data.nom}</h2>
+          <p>${data.description}</p>
+          <p class="prix">${data.prix} €</p>
+          <button class="add-to-cart-btn"
+            data-nom="${data.nom}"
+            data-categorie="${data.categorie}"
+            data-prix="${data.prix}">Ajouter au panier</button>
+        </div>
+      `;
+
+      document.querySelector(".add-to-cart-btn").addEventListener("click", (e) => {
+        const nom = e.target.getAttribute("data-nom");
+        const categorie = e.target.getAttribute("data-categorie");
+        const prix = parseFloat(e.target.getAttribute("data-prix"));
+        ajouterAuPanier(nom, categorie, prix);
+      });
+    }
+
+    function ajouterAuPanier(nom, categorie, prix) {
+      let panier = JSON.parse(localStorage.getItem("panierDetaille")) || [];
+      const index = panier.findIndex(item => item.nom === nom && item.categorie === categorie);
+
+      if (index !== -1) {
+        panier[index].quantite += 1;
+      } else {
+        panier.push({ nom, categorie, prix, quantite: 1 });
+      }
+
+      localStorage.setItem("panierDetaille", JSON.stringify(panier));
+      mettreAJourBadgeNav();
+
+      const msg = document.getElementById("ajout-message");
+      msg.classList.add("visible");
+      setTimeout(() => msg.classList.remove("visible"), 1500);
+    }
+
+    function mettreAJourBadgeNav() {
+      const panier = JSON.parse(localStorage.getItem("panierDetaille")) || [];
+      const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
+      const badge = document.getElementById("nav-badge");
+      if (badge) {
+        badge.textContent = totalArticles > 0 ? totalArticles : '';
+        badge.classList.remove("bounce");
+        void badge.offsetWidth;
+        badge.classList.add("bounce");
+      }
+    }
+
+    chargerDetailsPlat(platId);
+
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+        mettreAJourBadgeNav();
+      });
+
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+  </script>
+</body>
+</html>
