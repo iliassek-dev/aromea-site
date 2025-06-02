@@ -55,14 +55,7 @@
     import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-firestore.js";
 
     // 🔹 Configuration de ton projet Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyBKpabQB5rKC1zCAyy1puKO3G1YzK0SIxA",
-      authDomain: "aromea-9c2f0.firebaseapp.com",
-      projectId: "aromea-9c2f0",
-      storageBucket: "aromea-9c2f0.appspot.com",
-      messagingSenderId: "974441059113",
-      appId: "1:974441059113:web:b6d1f607707ad50a209d38"
-    };
+    import { firebaseConfig } from "./firebase-config.js";
 
     // 🔹 Initialiser Firebase et Firestore
     const app = initializeApp(firebaseConfig);
@@ -84,8 +77,6 @@
 
         // Dynamique pour afficher les articles dans les sections (Plats, Desserts, Boissons)
         const menuContainer = document.getElementById(data.categorie + "-container"); // Sélectionner la bonne catégorie d'articles
-
-        // Créer un élément pour chaque article
         const articleDiv = document.createElement("div");
         articleDiv.className = "menu-item"; // Ajouter une classe CSS pour chaque article
 
