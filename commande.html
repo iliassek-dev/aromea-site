@@ -33,21 +33,33 @@
     </section>
 
     <!-- ===== FORMULAIRE CLIENT POUR SAISIR LES INFOS ===== -->
-    <section class="formulaire">
-      <h3>Vos informations</h3>
-      <form id="form-commande">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required />
+    <!-- ===== FORMULAIRE CLIENT MODERNE ===== -->
+<section class="formulaire">
+  <h3>Vos informations</h3>
+  <form id="form-commande">
 
-        <label for="adresse">Adresse :</label>
-        <input type="text" id="adresse" name="adresse" required />
+    <div class="input-group">
+      <input type="text" id="nom" name="nom" placeholder=" " required pattern="^[A-Za-zÀ-ÿ\s'-]{2,}$" title="Veuillez entrer un nom valide">
+      <label for="nom">Nom</label>
+      <i class="fas fa-user"></i>
+    </div>
 
-        <label for="tel">Téléphone :</label>
-        <input type="tel" id="tel" name="tel" required />
+    <div class="input-group">
+      <input type="text" id="adresse" name="adresse" placeholder=" " required minlength="5" title="Veuillez entrer une adresse complète">
+      <label for="adresse">Adresse</label>
+      <i class="fas fa-map-marker-alt"></i>
+    </div>
 
-        <button type="submit">Valider la commande</button>
-      </form>
-    </section>
+    <div class="input-group">
+      <input type="tel" id="tel" name="tel" placeholder=" " required pattern="^(\+33|0)[1-9](\d{2}){4}$" title="Format : 06XXXXXXXX ou +336XXXXXXXX">
+      <label for="tel">Téléphone</label>
+      <i class="fas fa-phone"></i>
+    </div>
+
+    <button type="submit">Valider la commande</button>
+  </form>
+</section>
+
 
     <!-- ===== RÉCAPITULATIF DE LA COMMANDE ===== -->
     <section id="recapitulatif" style="display: none;">

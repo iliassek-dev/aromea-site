@@ -1,590 +1,769 @@
+
+
 /* ========== BASE ========== */
+/*
+Description : Styles appliqués à la section base.
+Section commune ou non spécifiée.
+*/
+
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #0f172a;
-    color: #f1f5f9;
-    line-height: 1.6;
+    margin: 0;  /* Marge extérieure (espace autour de l'élément) */
+    font-family: 'Segoe UI', sans-serif;  /* Police de caractères utilisée pour le texte */
+    background-color: #0f172a;  /* Couleur de fond */
+    color: #f1f5f9;  /* Couleur du texte */
+    line-height: 1.6;  /* Hauteur de ligne (espacement vertical entre les lignes de texte) */
 }
 
 h1, h2, h3, h4 {
-    color: #f97316;
+    color: #f97316;  /* Couleur du texte */
 }
 
 a {
-    text-decoration: none;
-    color: #f97316;
+    text-decoration: none;  /* Style du texte (ex: souligné) */
+    color: #f97316;  /* Couleur du texte */
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: underline;  /* Style du texte (ex: souligné) */
 }
 
 main {
-    padding: 20px;
+    padding: 20px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
 }
-/* ========== HEADER (mise en page comme l’image) ========== */
+
+
+/* ========== HEADER (MISE EN PAGE COMME L’IMAGE) ========== */
+/*
+Description : Styles appliqués à la section header (mise en page comme l’image).
+Présent sur toutes les pages.
+*/
+
 header {
-    background-color: #0f172a;
-    padding: 15px 40px;
-    border-bottom: 1px solid #ffffff33; /* fine ligne blanche transparente */
-    margin-bottom: 10px; /* petit espace en dessous */
+    background-color: #0f172a;  /* Couleur de fond */
+    padding: 15px 40px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+    border-bottom: 1px solid #ffffff33; /* fine ligne blanche transparente */  /* Bordure en bas uniquement */
+    margin-bottom: 10px; /* petit espace en dessous */  /* Propriété CSS */
   }
   
   .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+    justify-content: space-between;  /* Alignement horizontal des éléments dans un conteneur flex */
+    align-items: center;  /* Alignement vertical des éléments dans un conteneur flex */
   }
   
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: #f97316;
+    display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+    align-items: center;  /* Alignement vertical des éléments dans un conteneur flex */
+    gap: 10px;  /* Espacement entre les éléments (dans flex ou grid) */
+    font-size: 1.6rem;  /* Taille du texte */
+    font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
+    color: #f97316;  /* Couleur du texte */
   }
   
   .logo-img {
-    width: 28px;
-    height: 28px;
+    width: 28px;  /* Largeur de l'élément */
+    height: 28px;  /* Hauteur de l'élément */
   }
   
   nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
+    list-style: none;  /* Style de la liste (ex: points, numéros, etc.) */
+    display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+    gap: 30px;  /* Espacement entre les éléments (dans flex ou grid) */
+    margin: 0;  /* Marge extérieure (espace autour de l'élément) */
+    padding: 0;  /* Marge intérieure (espace à l'intérieur de l'élément) */
   }
   
   nav ul li a {
-    color: #f1f5f9;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
+    color: #f1f5f9;  /* Couleur du texte */
+    text-decoration: none;  /* Style du texte (ex: souligné) */
+    font-weight: 500;  /* Épaisseur de la police (normal, gras...) */
+    font-size: 1rem;  /* Taille du texte */
   }
   
   nav ul li a:hover {
-    color: #f97316;
+    color: #f97316;  /* Couleur du texte */
   }
-  
+
+
 /* ========== FOOTER ========== */
-footer {
-    background-color: #0f172a;
-    padding: 20px;
-    text-align: center;
-    font-size: 0.9rem;
-    border-top: 1px solid #1e293b;
-    color: #cbd5e1;
+/*
+Description : Styles appliqués à la section footer.
+Présent sur toutes les pages.
+*/
+.footer {
+  background-color: #0f172a;
+  color: #cbd5e1;
+  padding: 40px 20px 20px;
+  border-top: 1px solid #1e293b;
+  font-size: 0.95rem;
 }
 
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.footer-col h4 {
+  color: #f97316;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.footer-col p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.footer-col i {
+  color: #f97316;
+  min-width: 18px;
+}
+
+.socials a {
+  display: inline-block;
+  color: #f1f5f9;
+  font-size: 1.4rem;
+  margin-right: 15px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.socials a:hover {
+  color: #f97316;
+  transform: scale(1.2);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #334155;
+  padding-top: 15px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.footer-bottom a {
+  color: #f97316;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 700px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-col p {
+    justify-content: center;
+  }
+}
+
+
 /* ========== ACCUEIL ========== */
+/*
+Description : Styles appliqués à la section accueil.
+Utilisé uniquement dans la page d'accueil (index.html).
+*/
+
 .accueil .hero {
     background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
                 url('images/fond.png') center/cover no-repeat;
-    padding: 100px 40px;
-    color: #f1f5f9;
-    text-align: left;
-    min-height: 450px;
-    background-repeat: no-repeat;
-    background-position: center;
+    padding: 100px 40px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+    color: #f1f5f9;  /* Couleur du texte */
+    text-align: left;  /* Propriété CSS */
+    min-height: 450px;  /* Propriété CSS */
+    background-repeat: no-repeat;  /* Propriété CSS */
+    background-position: center;  /* Propriété CSS */
 }
 
 .accueil .hero h2 {
-    font-size: 3rem;
-    color: #f97316;
-    margin-bottom: 20px;
+    font-size: 3rem;  /* Taille du texte */
+    color: #f97316;  /* Couleur du texte */
+    margin-bottom: 20px;  /* Propriété CSS */
 }
 
 .accueil .hero p {
-    font-size: 1.2rem;
-    color: #cbd5e1;
-    margin-bottom: 30px;
+    font-size: 1.2rem;  /* Taille du texte */
+    color: #cbd5e1;  /* Couleur du texte */
+    margin-bottom: 30px;  /* Propriété CSS */
 }
 /* Style spécifique aux encadrés sur la page d'accueil */
 
 .accueil .menu-grid {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 60px; /* ✅ Ajoute cette ligne */
+}
+
 
 .accueil .menu-item {
-    padding: 45px;
-    width: 550px; /* ✅ Ajuste la largeur ici */
-    font-size: 1.1rem;
-    min-height: 120px;        /* 🟠 augmente la hauteur */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 45px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+    width: 550px; /* ✅ Ajuste la largeur ici */  /* Largeur de l'élément */
+    font-size: 1.1rem;  /* Taille du texte */
+    min-height: 120px;        /* 🟠 augmente la hauteur */  /* Propriété CSS */
+    display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+    flex-direction: column;  /* Propriété CSS */
+    justify-content: space-between;  /* Alignement horizontal des éléments dans un conteneur flex */
   }
 
  .accueil .menu-item img {
-    height: 300px;            /* ajuste selon le besoin */
-    object-fit: cover;
-    border-radius: 8px;
+    height: 300px;            /* ajuste selon le besoin */  /* Hauteur de l'élément */
+    object-fit: cover;  /* Propriété CSS */
+    border-radius: 8px;  /* Propriété CSS */
   }
-  
-  
+
+
 /* ========== PARAGRAPHE INTRODUCTION ========== */
+/*
+Description : Styles appliqués à la section paragraphe introduction.
+Section commune ou non spécifiée.
+*/
+
 .intro {
-    max-width: 800px;
-    margin: 0 auto 30px;
-    text-align: center;
-    font-size: 1.1rem;
-    color: #cbd5e1;
+    max-width: 800px;  /* Propriété CSS */
+    margin: 0 auto 30px;  /* Marge extérieure (espace autour de l'élément) */
+    text-align: center;  /* Propriété CSS */
+    font-size: 1.1rem;  /* Taille du texte */
+    color: #cbd5e1;  /* Couleur du texte */
 }
 
-/* ========== TITRE "Nos plats populaires" ========== */
+
+/* ========== TITRE "NOS PLATS POPULAIRES" ========== */
+/*
+Description : Styles appliqués à la section titre "nos plats populaires".
+Section commune ou non spécifiée.
+*/
+
 .preview-menu h3 {
-    text-align: center;
-    color: #f97316;
-    font-size: 1.8rem;
-    margin-top: 60px;
+    text-align: center;  /* Propriété CSS */
+    color: #f97316;  /* Couleur du texte */
+    font-size: 1.8rem;  /* Taille du texte */
+    margin-top: 60px;  /* Propriété CSS */
 }
+
 
 /* ========== BOUTONS ========== */
+/*
+Description : Styles appliqués à la section boutons.
+Section commune ou non spécifiée.
+*/
+
 .btn {
-    display: inline-block;
-    background-color: #f97316;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background 0.3s;
+    display: inline-block;  /* Type de boîte CSS (ex: block, flex, etc.) */
+    background-color: #f97316;  /* Couleur de fond */
+    color: white;  /* Couleur du texte */
+    padding: 12px 24px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+    border-radius: 8px;  /* Propriété CSS */
+    font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
+    transition: background 0.3s;  /* Propriété CSS */
 }
 
 .btn:hover {
-    background-color: #ea580c;
+    background-color: #ea580c;  /* Couleur de fond */
 }
 
+
 /* ========== PAGE MENU ========== */
+/*
+Description : Styles appliqués à la section page menu.
+Utilisé uniquement dans la page menu.html.
+*/
+
 .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  display: grid;  /* Type de boîte CSS (ex: block, flex, etc.) */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Propriété CSS */
+  gap: 20px;  /* Espacement entre les éléments (dans flex ou grid) */
 }
 
 .menu-item {
-  background-color: #1e293b;
-  padding: 15px;
-  border: 1px solid #334155;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 460px; /* fixe la hauteur minimale pour uniformiser */
+  background-color: #1e293b;  /* Couleur de fond */
+  padding: 15px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border: 1px solid #334155;  /* Bordure autour de l'élément */
+  border-radius: 10px;  /* Propriété CSS */
+  text-align: center;  /* Propriété CSS */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);  /* Propriété CSS */
+  display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+  flex-direction: column;  /* Propriété CSS */
+  justify-content: space-between;  /* Alignement horizontal des éléments dans un conteneur flex */
+  min-height: 460px; /* fixe la hauteur minimale pour uniformiser */  /* Propriété CSS */
 }
 
 .menu-item img {
-  width: 100%;
-  height: 180px;
-  object-fit: contain;
-  border-radius: 8px;
+  width: 100%;  /* Largeur de l'élément */
+  height: 180px;  /* Hauteur de l'élément */
+  object-fit: contain;  /* Propriété CSS */
+  border-radius: 8px;  /* Propriété CSS */
 }
 
 .menu-item h4 {
-  font-size: 2.0rem;
-  margin: 10px 0 5px;
-  color: #f97316;
+  font-size: 2.0rem;  /* Taille du texte */
+  margin: 10px 0 5px;  /* Marge extérieure (espace autour de l'élément) */
+  color: #f97316;  /* Couleur du texte */
 }
 
 .menu-item p {
-  font-size: 1.2rem;
-  color: #cbd5e1;
-  margin-bottom: 2px; /* 🟧 réduit l’espace entre le texte et le prix */
+  font-size: 1.2rem;  /* Taille du texte */
+  color: #cbd5e1;  /* Couleur du texte */
+  margin-bottom: 2px; /* 🟧 réduit l’espace entre le texte et le prix */  /* Propriété CSS */
 }
 
 .menu-item button {
-  margin-top: 0;
-  background-color: #f97316;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  cursor: pointer;
+  margin-top: 0;  /* Propriété CSS */
+  background-color: #f97316;  /* Couleur de fond */
+  color: white;  /* Couleur du texte */
+  border: none;  /* Bordure autour de l'élément */
+  padding: 8px 15px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border-radius: 5px;  /* Propriété CSS */
+  cursor: pointer;  /* Propriété CSS */
 }
 
 .menu-item button:hover {
-  background-color: #ea580c;
+  background-color: #ea580c;  /* Couleur de fond */
 }
 
 .menu-section > h3 {
-  text-align: center;
-  font-size: 2rem;
-  margin: 40px 0 20px;
-  color: #f97316;
+  text-align: center;  /* Propriété CSS */
+  font-size: 2rem;  /* Taille du texte */
+  margin: 40px 0 20px;  /* Marge extérieure (espace autour de l'élément) */
+  color: #f97316;  /* Couleur du texte */
 }
 
 /* ✅ Bloc contenant prix + bouton */
 .prix-wrapper {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: auto;  /* Propriété CSS */
+  display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+  flex-direction: column;  /* Propriété CSS */
+  align-items: center;  /* Alignement vertical des éléments dans un conteneur flex */
 }
 
 
 /* ✅ Prix seul */
 .menu-item .prix {
-  font-size: 1.1rem;
-  color: #f97316;
-  font-weight: bold;
-  text-align: center;
-  margin: 0;
-  margin-bottom: 12px;  
+  font-size: 1.1rem;  /* Taille du texte */
+  color: #f97316;  /* Couleur du texte */
+  font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
+  text-align: center;  /* Propriété CSS */
+  margin: 0;  /* Marge extérieure (espace autour de l'élément) */
+  margin-bottom: 12px;    /* Propriété CSS */
 }
 
 .menu-item:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease;
+  transform: scale(1.02);  /* Propriété CSS */
+  transition: transform 0.3s ease;  /* Propriété CSS */
 }
 
 .ajout-flottant {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #10b981;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.4s ease;
-  z-index: 9999;
+  position: fixed;  /* Propriété CSS */
+  top: 20px;  /* Propriété CSS */
+  right: 20px;  /* Propriété CSS */
+  background-color: #10b981;  /* Couleur de fond */
+  color: white;  /* Couleur du texte */
+  padding: 12px 20px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border-radius: 8px;  /* Propriété CSS */
+  font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);  /* Propriété CSS */
+  opacity: 0;  /* Propriété CSS */
+  transform: translateY(-10px);  /* Propriété CSS */
+  transition: all 0.4s ease;  /* Propriété CSS */
+  z-index: 9999;  /* Propriété CSS */
 
-  pointer-events: none; /* ✅ Empêche de bloquer les clics */
+  pointer-events: none; /* ✅ Empêche de bloquer les clics */  /* Propriété CSS */
 }
 
 .ajout-flottant.visible {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1;  /* Propriété CSS */
+  transform: translateY(0);  /* Propriété CSS */
 }
+.btn-menu {
+  display: block;
+  margin: 40px auto 20px; /* 100px dessous = gros espace avant le footer */
+    display: inline-block !important;
+  width: auto !important;
+   margin-top: 0px;    /* ↑ ajoute un peu d'espace avec ce qu’il y a au-dessus */
+}
+
+
+
+
 
 
 /* ========== À PROPOS + MAP ========== */
+/*
+Description : Styles appliqués à la section à propos + map.
+Section commune ou non spécifiée.
+*/
+
 .about-map {
-    padding: 60px 20px;
+    padding: 60px 20px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
   }
   
   .about-map h3 {
-    text-align: center;
-    font-size: 2rem;
-    color: #f97316;
-    margin-bottom: 30px;
+    text-align: center;  /* Propriété CSS */
+    font-size: 2rem;  /* Taille du texte */
+    color: #f97316;  /* Couleur du texte */
+    margin-bottom: 30px;  /* Propriété CSS */
   }
   
   .about-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
-    max-width: 1300px;
-    margin: 0 auto;
+    display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+    flex-wrap: wrap;  /* Propriété CSS */
+    justify-content: space-between;  /* Alignement horizontal des éléments dans un conteneur flex */
+    gap: 40px;  /* Espacement entre les éléments (dans flex ou grid) */
+    max-width: 1300px;  /* Propriété CSS */
+    margin: 0 auto;  /* Marge extérieure (espace autour de l'élément) */
   }
   
   .about-text {
-    flex: 1;
-    min-width: 300px;
-    background-color: #1e293b;
-    color: #cbd5e1;
-    padding: 30px;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    border-radius: 10px;
+    flex: 1;  /* Propriété CSS */
+    min-width: 300px;  /* Propriété CSS */
+    background-color: #1e293b;  /* Couleur de fond */
+    color: #cbd5e1;  /* Couleur du texte */
+    padding: 30px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+    font-size: 1.1rem;  /* Taille du texte */
+    line-height: 1.7;  /* Hauteur de ligne (espacement vertical entre les lignes de texte) */
+    border-radius: 10px;  /* Propriété CSS */
   }
   
   .about-map-box {
-    flex: 1;
-    min-width: 300px;
-    height: 400px; /* 🟠 augmente la hauteur ici */
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    flex: 1;  /* Propriété CSS */
+    min-width: 300px;  /* Propriété CSS */
+    height: 400px; /* 🟠 augmente la hauteur ici */  /* Hauteur de l'élément */
+    border-radius: 10px;  /* Propriété CSS */
+    overflow: hidden;  /* Propriété CSS */
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);  /* Propriété CSS */
   }
 
-  /* ========== PAGE COMMANDE ========== */
+
+/* ========== PAGE COMMANDE ========== */
+/*
+Description : Styles appliqués à la section page commande.
+Utilisé uniquement dans la page commande.html.
+*/
+
 .commande-page {
-  max-width: 800px;
-  margin: auto;
-  padding: 40px 20px;
+  max-width: 800px;  /* Propriété CSS */
+  margin: auto;  /* Marge extérieure (espace autour de l'élément) */
+  padding: 40px 20px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
 }
 
 .filters {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 30px;
+  display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+  justify-content: center;  /* Alignement horizontal des éléments dans un conteneur flex */
+  gap: 15px;  /* Espacement entre les éléments (dans flex ou grid) */
+  margin-bottom: 30px;  /* Propriété CSS */
 }
 
 .filters button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #1e293b;
-  color: #f1f5f9;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-  font-weight: bold;
+  padding: 10px 20px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border: none;  /* Bordure autour de l'élément */
+  background-color: #1e293b;  /* Couleur de fond */
+  color: #f1f5f9;  /* Couleur du texte */
+  border-radius: 30px;  /* Propriété CSS */
+  cursor: pointer;  /* Propriété CSS */
+  transition: background 0.3s, color 0.3s;  /* Propriété CSS */
+  font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
 }
 
 .filters button.active,
 .filters button:hover {
-  background-color: #f97316;
-  color: #0f172a;
+  background-color: #f97316;  /* Couleur de fond */
+  color: #0f172a;  /* Couleur du texte */
 }
 
 #liste-panier {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 40px;
+  display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+  flex-direction: column;  /* Propriété CSS */
+  gap: 15px;  /* Espacement entre les éléments (dans flex ou grid) */
+  margin-bottom: 40px;  /* Propriété CSS */
 }
 
 .panier-item {
-  background-color: #1e293b;
-  padding: 15px 20px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  background-color: #1e293b;  /* Couleur de fond */
+  padding: 15px 20px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border-radius: 15px;  /* Propriété CSS */
+  display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+  justify-content: space-between;  /* Alignement horizontal des éléments dans un conteneur flex */
+  align-items: center;  /* Alignement vertical des éléments dans un conteneur flex */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);  /* Propriété CSS */
 }
 
 .panier-item span {
-  font-size: 1.1rem;
+  font-size: 1.1rem;  /* Taille du texte */
 }
 
 .controls button {
-  margin-left: 8px;
-  padding: 5px 12px;
-  border: none;
-  background-color: #f97316;
-  color: #0f172a;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
+  margin-left: 8px;  /* Propriété CSS */
+  padding: 5px 12px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border: none;  /* Bordure autour de l'élément */
+  background-color: #f97316;  /* Couleur de fond */
+  color: #0f172a;  /* Couleur du texte */
+  font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
+  border-radius: 8px;  /* Propriété CSS */
+  cursor: pointer;  /* Propriété CSS */
+  transition: background 0.3s;  /* Propriété CSS */
 }
 
 .controls button:hover {
-  background-color: #fb923c;
+  background-color: #fb923c;  /* Couleur de fond */
 }
 
 .formulaire {
-  background-color: #1e293b;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-  margin-bottom: 60px;
+  background-color: #1e293b;  /* Couleur de fond */
+  padding: 25px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border-radius: 15px;  /* Propriété CSS */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);  /* Propriété CSS */
+  margin-bottom: 60px;  /* Propriété CSS */
 }
 
 .formulaire label {
-  display: block;
-  margin: 15px 0 5px;
+  display: block;  /* Type de boîte CSS (ex: block, flex, etc.) */
+  margin: 15px 0 5px;  /* Marge extérieure (espace autour de l'élément) */
 }
 
 .formulaire input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  background-color: #334155;
-  color: #f1f5f9;
+  width: 100%;  /* Largeur de l'élément */
+  padding: 10px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border-radius: 8px;  /* Propriété CSS */
+  border: none;  /* Bordure autour de l'élément */
+  background-color: #334155;  /* Couleur de fond */
+  color: #f1f5f9;  /* Couleur du texte */
 }
 
 .formulaire button {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background-color: #f97316;
-  border: none;
-  border-radius: 30px;
-  color: #0f172a;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  transition: background 0.3s;
+  margin-top: 20px;  /* Propriété CSS */
+  padding: 12px 20px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  background-color: #f97316;  /* Couleur de fond */
+  border: none;  /* Bordure autour de l'élément */
+  border-radius: 30px;  /* Propriété CSS */
+  color: #0f172a;  /* Couleur du texte */
+  font-size: 16px;  /* Taille du texte */
+  font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
+  cursor: pointer;  /* Propriété CSS */
+  width: 100%;  /* Largeur de l'élément */
+  transition: background 0.3s;  /* Propriété CSS */
 }
 
 .formulaire button:hover {
-  background-color: #fb923c;
+  background-color: #fb923c;  /* Couleur de fond */
 }
 
 @media (max-width: 600px) {
   .filters {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column;  /* Propriété CSS */
+    align-items: center;  /* Alignement vertical des éléments dans un conteneur flex */
   }
 
   .panier-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    flex-direction: column;  /* Propriété CSS */
+    align-items: flex-start;  /* Alignement vertical des éléments dans un conteneur flex */
+    gap: 10px;  /* Espacement entre les éléments (dans flex ou grid) */
   }
 
   .controls {
-    display: flex;
-    gap: 10px;
+    display: flex;  /* Type de boîte CSS (ex: block, flex, etc.) */
+    gap: 10px;  /* Espacement entre les éléments (dans flex ou grid) */
   }
 }
 
 .total-global {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-top: 15px;
-  color: #f97316;
+  font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
+  font-size: 1.2rem;  /* Taille du texte */
+  margin-top: 15px;  /* Propriété CSS */
+  color: #f97316;  /* Couleur du texte */
 }
 
 .btn-clear {
-  background-color: #e11d48;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 10px;
+  background-color: #e11d48;  /* Couleur de fond */
+  color: white;  /* Couleur du texte */
+  border: none;  /* Bordure autour de l'élément */
+  padding: 10px 16px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  border-radius: 6px;  /* Propriété CSS */
+  cursor: pointer;  /* Propriété CSS */
+  margin-top: 10px;  /* Propriété CSS */
 }
 
 .btn-clear:hover {
-  background-color: #be123c;
+  background-color: #be123c;  /* Couleur de fond */
 }
 
 
 /* ========== PAGE CONTACT ========== */
+/*
+Description : Styles appliqués à la section page contact.
+Utilisé uniquement dans la page contact.html.
+*/
+/* ========== FORMULAIRE CONTACT MODERNE ========== */
+
 .contact-page {
   max-width: 800px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 
 .contact-page h2 {
   color: #f97316;
+  font-size: 2.2rem;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .contact-page p {
-  margin-bottom: 30px;
   color: #cbd5e1;
-}
-
-.contact-form {
-  background-color: #1e293b;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  text-align: center;
+  font-size: 1.1rem;
   margin-bottom: 40px;
 }
 
-.contact-form label {
-  display: block;
-  margin: 15px 0 5px;
-  font-weight: bold;
-}
-
-.contact-form input,
-.formulaire textarea {
-  background-color: #334155;
-  border: none;
-  border-radius: 10px;
-  padding: 12px;
-  color: #f1f5f9;
-  font-size: 1rem;
+.formulaire {
+  background-color: #1e293b;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  max-width: 600px;
   width: 100%;
-  min-height: 150px;
-  resize: vertical;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  box-sizing: border-box;
 }
 
+/* Groupe contenant label + champ */
+.input-group {
+  position: relative;
+}
 
-.contact-form textarea {
-  background-color: #334155;  /* même couleur que les inputs */
-  border: none;
-  border-radius: 10px;
-  padding: 12px;
-  color: #f1f5f9;
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 18px 20px 16px 48px; /* ↑ corrige l'alignement vertical */
   font-size: 1rem;
-  width: 100%;               /* 🟧 assure la bonne largeur */
-  min-height: 150px;         /* 🟥 augmente la hauteur */
-  resize: vertical;
+  border: none;
+  border-radius: 12px;
+  background-color: #334155;
+  color: #f1f5f9;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
 }
 
 
-.contact-form button {
-  margin-top: 25px;
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #f97316;
+  background-color: #475569;
+}
+
+/* Label flottant */
+.input-group label {
+  position: absolute;
+  left: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+/* Correction pour textarea (alignement du label) */
+.input-group textarea + label {
+  top: 1.1rem;
+}
+
+/* Quand input/textarea a du texte ou est focus */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+  top: -0.6rem;
+  left: 44px;
+  font-size: 0.75rem;
+  background-color: #1e293b;
+  padding: 0 6px;
+  color: #f97316;
+}
+
+/* Icône à gauche */
+.input-group i {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  color: #f97316;
+  font-size: 1.1rem;
+}
+
+/* Bouton d'envoi */
+.formulaire button {
   padding: 14px;
-  background-color: #f97316;
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #0f172a;
   border: none;
   border-radius: 30px;
-  color: #0f172a;
-  font-size: 16px;
-  font-weight: bold;
-  width: 100%;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.contact-form button:hover {
-  background-color: #fb923c;
-}
-
-.contact-infos {
-  background-color: transparent;
-  padding: 0 10px;
-  text-align: left;
-  color: #cbd5e1;
-}
-
-.contact-infos h3 {
-  color: #f97316;
-  margin-bottom: 15px;
-}
-
-.contact-infos p {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
   font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
 }
 
-.contact-infos p i {
-  color: #f97316;
+.formulaire button:hover {
+  transform: scale(1.03);
+  background: linear-gradient(135deg, #fb923c, #f97316);
 }
 
 @media (max-width: 600px) {
-  .contact-form {
-    padding: 20px;
+  .formulaire {
+    padding: 25px;
   }
 }
 
+.formulaire form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* même espacement dans toutes les pages */
+}
+
+.formulaire .input-group {
+  margin-bottom: 0 !important; /* désactive les anciens espacements résiduels */
+}
+
+
 .badge-nav {
-  background-color: #ef4444; /* rouge vif */
-  color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
-  border-radius: 999px;
-  padding: 2px 7px;
-  position: absolute;
-  top: -8px;
-  right: -10px;
+  background-color: #ef4444; /* rouge vif */  /* Couleur de fond */
+  color: white;  /* Couleur du texte */
+  font-size: 0.75rem;  /* Taille du texte */
+  font-weight: bold;  /* Épaisseur de la police (normal, gras...) */
+  border-radius: 999px;  /* Propriété CSS */
+  padding: 2px 7px;  /* Marge intérieure (espace à l'intérieur de l'élément) */
+  position: absolute;  /* Propriété CSS */
+  top: -8px;  /* Propriété CSS */
+  right: -10px;  /* Propriété CSS */
 }
 
 @keyframes bounce {
   0%, 100% {
-    transform: scale(1);
+    transform: scale(1);  /* Propriété CSS */
   }
   50% {
-    transform: scale(1.3);
+    transform: scale(1.3);  /* Propriété CSS */
   }
 }
 
 .badge-nav.bounce {
-  animation: bounce 0.3s ease;
+  animation: bounce 0.3s ease;  /* Propriété CSS */
 }

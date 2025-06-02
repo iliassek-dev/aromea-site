@@ -5,78 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aromea - Contact</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- ===== CHARGEMENT DU HEADER ===== -->
+  <!-- ===== HEADER ===== -->
   <div id="header"></div>
 
-  <!-- ===== CONTENU DE LA PAGE CONTACT ===== -->
+  <!-- ===== PAGE CONTACT ===== -->
   <main class="contact-page">
     <h2>Contactez-nous</h2>
     <p>Une question ? Une réservation ? Remplissez le formulaire ci-dessous ou passez nous voir !</p>
 
-    <!-- === FORMULAIRE DE CONTACT === -->
+    <!-- ===== FORMULAIRE MODERNE ===== -->
     <form id="form-contact" class="formulaire">
 
-      <label for="nom">Nom :</label>
-      <input type="text" id="nom" name="nom" required>
+      <div class="input-group">
+        <input type="text" id="nom" name="nom" placeholder=" " required pattern="^[A-Za-zÀ-ÿ\s'-]{2,}$" title="Veuillez entrer un nom valide">
+        <label for="nom">Nom</label>
+        <i class="fas fa-user"></i>
+      </div>
 
-      <label for="email">E-mail :</label>
-      <input type="email" id="email" name="email" required>
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder=" " required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Veuillez entrer une adresse e-mail valide">
+        <label for="email">E-mail</label>
+        <i class="fas fa-envelope"></i>
+      </div>
 
-      <label for="message">Message :</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <div class="input-group">
+        <textarea id="message" name="message" placeholder=" " required minlength="10" maxlength="1000" title="Votre message doit contenir entre 10 et 1000 caractères."></textarea>
+        <label for="message">Message</label>
+        <i class="fas fa-comment"></i>
+      </div>
 
       <button type="submit">Envoyer</button>
     </form>
-
-    <!-- (Optionnel) Coordonnées -->
-    <div class="contact-infos">
-      <h3>Nos coordonnées</h3>
-      <p>📍 8 Av. des Chartreux, 13004 Marseille</p>
-      <p>📞 07 44 17 03 36</p>
-      <p>📧 aromea.thai@gmail.com</p>
-    </div>
   </main>
 
-  <!-- ===== CHARGEMENT DU FOOTER ===== -->
+  <!-- ===== FOOTER ===== -->
   <div id="footer"></div>
 
-  <!-- ===== SCRIPT DE CHARGEMENT HEADER/FOOTER + FORMULAIRE ===== -->
+  <!-- ===== SCRIPTS ===== -->
   <script>
-   function mettreAJourBadgeNav() {
-  const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
-  const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
-  const badge = document.getElementById('nav-badge');
-  if (badge) {
-    badge.textContent = totalArticles > 0 ? totalArticles : '';
+    function mettreAJourBadgeNav() {
+      const panier = JSON.parse(localStorage.getItem('panierDetaille')) || [];
+      const totalArticles = panier.reduce((sum, item) => sum + item.quantite, 0);
+      const badge = document.getElementById('nav-badge');
+      if (badge) {
+        badge.textContent = totalArticles > 0 ? totalArticles : '';
+        badge.classList.remove('bounce');
+        void badge.offsetWidth;
+        badge.classList.add('bounce');
+      }
+    }
 
-    // Ajoute l'effet de rebond
-    badge.classList.remove('bounce');
-    void badge.offsetWidth; // 🔄 force le reflow pour relancer l'animation
-    badge.classList.add('bounce');
-  }
-}
-
-    // Charger le header
+    // Charger header + badge
     fetch('header.html').then(res => res.text()).then(data => {
-  document.getElementById('header').innerHTML = data;
-  mettreAJourBadgeNav(); // 👈 mise à jour après injection du header
-});
+      document.getElementById('header').innerHTML = data;
+      mettreAJourBadgeNav();
+    });
 
-    // Charger le footer
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('footer').innerHTML = data;
-      });
+    // Charger footer
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer').innerHTML = data;
+    });
 
     // Gestion de l'envoi du formulaire
     document.getElementById('form-contact').addEventListener('submit', function(e) {
-      e.preventDefault(); // empêche le rechargement de la page
+      e.preventDefault();
       alert("📨 Message envoyé ! Nous vous répondrons rapidement.");
-      this.reset(); // vide les champs du formulaire
+      this.reset();
     });
   </script>
 
